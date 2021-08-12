@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>package.json</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="doc-style.css" />
+  <script src="doc-filelist.js"></script>
+  <script>
+    var relativeDir = "";
+    var thisFile = "package.json";
+    var defaultSidebar = true;
+  </script>
+  <script src="doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>package.json</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="json">{
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"create-nodejs-express-app"</span>,
+    <span class="hljs-attr">"version"</span>: <span class="hljs-string">"1.6.0"</span>,
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Create a Node.js app for building production-ready RESTful APIs using Express, by running one command"</span>,
+    <span class="hljs-attr">"bin"</span>: <span class="hljs-string">"bin/createNodejsApp.js"</span>,
+    <span class="hljs-attr">"main"</span>: <span class="hljs-string">"src/index.js"</span>,
+    <span class="hljs-attr">"repository"</span>: <span class="hljs-string">"https://github.com/hagopj13/node-express-boilerplate.git"</span>,
+    <span class="hljs-attr">"author"</span>: <span class="hljs-string">"Hagop Jamkojian &lt;hagopj13@gmail.com&gt;"</span>,
+    <span class="hljs-attr">"license"</span>: <span class="hljs-string">"MIT"</span>,
+    <span class="hljs-attr">"engines"</span>: {
+        <span class="hljs-attr">"node"</span>: <span class="hljs-string">"&gt;=12.0.0"</span>
+    },
+    <span class="hljs-attr">"scripts"</span>: {
+        <span class="hljs-attr">"start"</span>: <span class="hljs-string">"pm2 start ecosystem.config.json --no-daemon"</span>,
+        <span class="hljs-attr">"dev"</span>: <span class="hljs-string">"cross-env NODE_ENV=development nodemon src/index.js"</span>,
+        <span class="hljs-attr">"test"</span>: <span class="hljs-string">"jest -i"</span>,
+        <span class="hljs-attr">"test:watch"</span>: <span class="hljs-string">"jest -i --watchAll"</span>,
+        <span class="hljs-attr">"coverage"</span>: <span class="hljs-string">"jest -i --coverage"</span>,
+        <span class="hljs-attr">"coverage:coveralls"</span>: <span class="hljs-string">"jest -i --coverage --coverageReporters=text-lcov | coveralls"</span>,
+        <span class="hljs-attr">"lint"</span>: <span class="hljs-string">"eslint ."</span>,
+        <span class="hljs-attr">"lint:fix"</span>: <span class="hljs-string">"eslint . --fix"</span>,
+        <span class="hljs-attr">"prettier"</span>: <span class="hljs-string">"prettier --check **/*.js"</span>,
+        <span class="hljs-attr">"prettier:fix"</span>: <span class="hljs-string">"prettier --write **/*.js"</span>,
+        <span class="hljs-attr">"docker:prod"</span>: <span class="hljs-string">"docker-compose -f docker-compose.yml -f docker-compose.prod.yml up"</span>,
+        <span class="hljs-attr">"docker:dev"</span>: <span class="hljs-string">"docker-compose -f docker-compose.yml -f docker-compose.dev.yml up"</span>,
+        <span class="hljs-attr">"docker:test"</span>: <span class="hljs-string">"docker-compose -f docker-compose.yml -f docker-compose.test.yml up"</span>
+    },
+    <span class="hljs-attr">"keywords"</span>: [
+        <span class="hljs-string">"node"</span>,
+        <span class="hljs-string">"node.js"</span>,
+        <span class="hljs-string">"boilerplate"</span>,
+        <span class="hljs-string">"generator"</span>,
+        <span class="hljs-string">"express"</span>,
+        <span class="hljs-string">"rest"</span>,
+        <span class="hljs-string">"api"</span>,
+        <span class="hljs-string">"mongodb"</span>,
+        <span class="hljs-string">"mongoose"</span>,
+        <span class="hljs-string">"es6"</span>,
+        <span class="hljs-string">"es7"</span>,
+        <span class="hljs-string">"es8"</span>,
+        <span class="hljs-string">"es9"</span>,
+        <span class="hljs-string">"jest"</span>,
+        <span class="hljs-string">"travis"</span>,
+        <span class="hljs-string">"docker"</span>,
+        <span class="hljs-string">"passport"</span>,
+        <span class="hljs-string">"joi"</span>,
+        <span class="hljs-string">"eslint"</span>,
+        <span class="hljs-string">"prettier"</span>
+    ],
+    <span class="hljs-attr">"dependencies"</span>: {
+        <span class="hljs-attr">"bcryptjs"</span>: <span class="hljs-string">"^2.4.3"</span>,
+        <span class="hljs-attr">"compression"</span>: <span class="hljs-string">"^1.7.4"</span>,
+        <span class="hljs-attr">"cors"</span>: <span class="hljs-string">"^2.8.5"</span>,
+        <span class="hljs-attr">"cross-env"</span>: <span class="hljs-string">"^7.0.0"</span>,
+        <span class="hljs-attr">"dotenv"</span>: <span class="hljs-string">"^8.2.0"</span>,
+        <span class="hljs-attr">"express"</span>: <span class="hljs-string">"^4.17.1"</span>,
+        <span class="hljs-attr">"express-mongo-sanitize"</span>: <span class="hljs-string">"^2.0.0"</span>,
+        <span class="hljs-attr">"express-rate-limit"</span>: <span class="hljs-string">"^5.0.0"</span>,
+        <span class="hljs-attr">"helmet"</span>: <span class="hljs-string">"^4.1.0"</span>,
+        <span class="hljs-attr">"http-status"</span>: <span class="hljs-string">"^1.4.0"</span>,
+        <span class="hljs-attr">"joi"</span>: <span class="hljs-string">"^17.3.0"</span>,
+        <span class="hljs-attr">"jsonwebtoken"</span>: <span class="hljs-string">"^8.5.1"</span>,
+        <span class="hljs-attr">"moment"</span>: <span class="hljs-string">"^2.24.0"</span>,
+        <span class="hljs-attr">"mongoose"</span>: <span class="hljs-string">"^5.7.7"</span>,
+        <span class="hljs-attr">"morgan"</span>: <span class="hljs-string">"^1.9.1"</span>,
+        <span class="hljs-attr">"nodemailer"</span>: <span class="hljs-string">"^6.3.1"</span>,
+        <span class="hljs-attr">"passport"</span>: <span class="hljs-string">"^0.4.0"</span>,
+        <span class="hljs-attr">"passport-jwt"</span>: <span class="hljs-string">"^4.0.0"</span>,
+        <span class="hljs-attr">"pm2"</span>: <span class="hljs-string">"^4.1.2"</span>,
+        <span class="hljs-attr">"swagger-jsdoc"</span>: <span class="hljs-string">"^6.0.8"</span>,
+        <span class="hljs-attr">"swagger-ui-express"</span>: <span class="hljs-string">"^4.1.6"</span>,
+        <span class="hljs-attr">"validator"</span>: <span class="hljs-string">"^13.0.0"</span>,
+        <span class="hljs-attr">"winston"</span>: <span class="hljs-string">"^3.2.1"</span>,
+        <span class="hljs-attr">"xss-clean"</span>: <span class="hljs-string">"^0.1.1"</span>
+    },
+    <span class="hljs-attr">"devDependencies"</span>: {
+        <span class="hljs-attr">"coveralls"</span>: <span class="hljs-string">"^3.0.7"</span>,
+        <span class="hljs-attr">"eslint"</span>: <span class="hljs-string">"^7.0.0"</span>,
+        <span class="hljs-attr">"eslint-config-airbnb-base"</span>: <span class="hljs-string">"^14.0.0"</span>,
+        <span class="hljs-attr">"eslint-config-prettier"</span>: <span class="hljs-string">"^8.1.0"</span>,
+        <span class="hljs-attr">"eslint-plugin-import"</span>: <span class="hljs-string">"^2.18.2"</span>,
+        <span class="hljs-attr">"eslint-plugin-jest"</span>: <span class="hljs-string">"^24.0.1"</span>,
+        <span class="hljs-attr">"eslint-plugin-prettier"</span>: <span class="hljs-string">"^3.1.1"</span>,
+        <span class="hljs-attr">"eslint-plugin-security"</span>: <span class="hljs-string">"^1.4.0"</span>,
+        <span class="hljs-attr">"faker"</span>: <span class="hljs-string">"^5.1.0"</span>,
+        <span class="hljs-attr">"husky"</span>: <span class="hljs-string">"5.1.2"</span>,
+        <span class="hljs-attr">"jest"</span>: <span class="hljs-string">"^26.0.1"</span>,
+        <span class="hljs-attr">"lint-staged"</span>: <span class="hljs-string">"^10.0.7"</span>,
+        <span class="hljs-attr">"node-mocks-http"</span>: <span class="hljs-string">"^1.8.0"</span>,
+        <span class="hljs-attr">"nodemon"</span>: <span class="hljs-string">"^2.0.0"</span>,
+        <span class="hljs-attr">"prettier"</span>: <span class="hljs-string">"^2.0.5"</span>,
+        <span class="hljs-attr">"supertest"</span>: <span class="hljs-string">"^6.0.1"</span>
+    }
+}
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

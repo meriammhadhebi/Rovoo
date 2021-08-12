@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>index.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../";
+    var thisFile = "src\\index.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>index.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">const</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>);
+<span class="hljs-keyword">const</span> app = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./app'</span>);
+<span class="hljs-keyword">const</span> config = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./config/config'</span>);
+<span class="hljs-keyword">const</span> logger = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./config/logger'</span>);
+<span class="hljs-keyword">var</span> bodyParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">'body-parser'</span>);
+
+<span class="hljs-keyword">let</span> server;
+
+
+mongoose.connect(config.mongoose.url, config.mongoose.options).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  logger.info(<span class="hljs-string">'Connected to MongoDB'</span>);
+  logger.info(config.mongoose.url);
+  server = app.listen(config.port, () =&gt; {
+    logger.info(<span class="hljs-string">`Listening to port <span class="hljs-subst">${config.port}</span>`</span>);
+  });
+});
+
+<span class="hljs-keyword">const</span> exitHandler = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-keyword">if</span> (server) {
+    server.close(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      logger.info(<span class="hljs-string">'Server closed'</span>);
+      process.exit(<span class="hljs-number">1</span>);
+    });
+  } <span class="hljs-keyword">else</span> {
+    process.exit(<span class="hljs-number">1</span>);
+  }
+};
+
+<span class="hljs-keyword">const</span> unexpectedErrorHandler = <span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> {
+  logger.error(error);
+  exitHandler();
+};
+
+process.on(<span class="hljs-string">'uncaughtException'</span>, unexpectedErrorHandler);
+process.on(<span class="hljs-string">'unhandledRejection'</span>, unexpectedErrorHandler);
+
+process.on(<span class="hljs-string">'SIGTERM'</span>, () =&gt; {
+  logger.info(<span class="hljs-string">'SIGTERM received'</span>);
+  <span class="hljs-keyword">if</span> (server) {
+    server.close();
+  }
+});
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>README.md</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="doc-style.css" />
+  <script src="doc-filelist.js"></script>
+  <script>
+    var relativeDir = "";
+    var thisFile = "README.md";
+    var defaultSidebar = true;
+  </script>
+  <script src="doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+      <div class="heading h1">
+        <a href="#restful-api-node-server-boilerplate">RESTful API Node Server Boilerplate</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#quick-start">Quick Start</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#manual-installation">Manual Installation</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#table-of-contents">Table of Contents</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#features">Features</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#commands">Commands</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#environment-variables">Environment Variables</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#project-structure">Project Structure</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#api-documentation">API Documentation</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#api-endpoints">API Endpoints</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#error-handling">Error Handling</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#validation">Validation</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#authentication">Authentication</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#authorization">Authorization</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#logging">Logging</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#custom-mongoose-plugins">Custom Mongoose Plugins</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#tojson">toJSON</a>
+      </div>
+
+      <div class="heading h3">
+        <a href="#paginate">paginate</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#linting">Linting</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#contributing">Contributing</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#inspirations">Inspirations</a>
+      </div>
+
+      <div class="heading h2">
+        <a href="#license">License</a>
+      </div>
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="docs markdown"><div class="pilwrap" id="restful-api-node-server-boilerplate">
+  <h1>
+    <a href="#restful-api-node-server-boilerplate" name="restful-api-node-server-boilerplate" class="pilcrow"></a>
+RESTful API Node Server Boilerplate
+  </h1>
+</div>
+<p><a href="https://travis-ci.org/hagopj13/node-express-boilerplate"><img src="https://travis-ci.org/hagopj13/node-express-boilerplate.svg?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/github/hagopj13/node-express-boilerplate?branch=master"><img src="https://coveralls.io/repos/github/hagopj13/node-express-boilerplate/badge.svg?branch=master" alt="Coverage Status"></a>
+<a href="https://www.codacy.com/manual/hagopj13/node-express-mongoose-boilerplate?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hagopj13/node-express-boilerplate&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/2ab03f5d62a1404f87a659afe8d6d5de" alt="Codacy Badge"></a>
+<a href="http://makeapullrequest.com"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"></a></p>
+<p>A boilerplate/starter project for quickly building RESTful APIs using Node.js, Express, and Mongoose.</p>
+<p>By running a single command, you will get a production-ready Node.js app installed and fully configured on your machine. The app comes with many built-in features, such as authentication using JWT, request validation, unit and integration tests, continuous integration, docker support, API documentation, pagination, etc. For more details, check the features list below.</p>
+<div class="pilwrap" id="quick-start">
+  <h2>
+    <a href="#quick-start" name="quick-start" class="pilcrow"></a>
+Quick Start
+  </h2>
+</div>
+<p>To create a project, simply run:</p>
+<pre><code class="bash">npx create-nodejs-express-app &lt;project-name&gt;
+</code></pre>
+<p>Or</p>
+<pre><code class="bash">npm init nodejs-express-app &lt;project-name&gt;
+</code></pre>
+<div class="pilwrap" id="manual-installation">
+  <h2>
+    <a href="#manual-installation" name="manual-installation" class="pilcrow"></a>
+Manual Installation
+  </h2>
+</div>
+<p>If you would still prefer to do the installation manually, follow these steps:</p>
+<p>Clone the repo:</p>
+<pre><code class="bash">git <span class="hljs-built_in">clone</span> --depth 1 https://github.com/hagopj13/node-express-boilerplate.git
+<span class="hljs-built_in">cd</span> node-express-boilerplate
+npx rimraf ./.git
+</code></pre>
+<p>Install the dependencies:</p>
+<pre><code class="bash">yarn install
+</code></pre>
+<p>Set the environment variables:</p>
+<pre><code class="bash">cp .env.example .env
+
+<span class="hljs-comment"># open .env and modify the environment variables (if needed)</span>
+</code></pre>
+<div class="pilwrap" id="table-of-contents">
+  <h2>
+    <a href="#table-of-contents" name="table-of-contents" class="pilcrow"></a>
+Table of Contents
+  </h2>
+</div>
+<ul>
+<li><a href="#features.html">Features</a></li>
+<li><a href="#commands.html">Commands</a></li>
+<li><a href="#environment-variables.html">Environment Variables</a></li>
+<li><a href="#project-structure.html">Project Structure</a></li>
+<li><a href="#api-documentation.html">API Documentation</a></li>
+<li><a href="#error-handling.html">Error Handling</a></li>
+<li><a href="#validation.html">Validation</a></li>
+<li><a href="#authentication.html">Authentication</a></li>
+<li><a href="#authorization.html">Authorization</a></li>
+<li><a href="#logging.html">Logging</a></li>
+<li><a href="#custom-mongoose-plugins.html">Custom Mongoose Plugins</a></li>
+<li><a href="#linting.html">Linting</a></li>
+<li><a href="#contributing.html">Contributing</a></li>
+</ul>
+<div class="pilwrap" id="features">
+  <h2>
+    <a href="#features" name="features" class="pilcrow"></a>
+Features
+  </h2>
+</div>
+<ul>
+<li><strong>ES9</strong>: latest ECMAScript features</li>
+<li><strong>NoSQL database</strong>: <a href="https://www.mongodb.com">MongoDB</a> object data modeling using <a href="https://mongoosejs.com">Mongoose</a></li>
+<li><strong>Authentication and authorization</strong>: using <a href="http://www.passportjs.org">passport</a></li>
+<li><strong>Validation</strong>: request data validation using <a href="https://github.com/hapijs/joi">Joi</a></li>
+<li><strong>Logging</strong>: using <a href="https://github.com/winstonjs/winston">winston</a> and <a href="https://github.com/expressjs/morgan">morgan</a></li>
+<li><strong>Testing</strong>: unit and integration tests using <a href="https://jestjs.io">Jest</a></li>
+<li><strong>Error handling</strong>: centralized error handling mechanism</li>
+<li><strong>API documentation</strong>: with <a href="https://github.com/Surnet/swagger-jsdoc">swagger-jsdoc</a> and <a href="https://github.com/scottie1984/swagger-ui-express">swagger-ui-express</a></li>
+<li><strong>Process management</strong>: advanced production process management using <a href="https://pm2.keymetrics.io">PM2</a></li>
+<li><strong>Dependency management</strong>: with <a href="https://yarnpkg.com">Yarn</a></li>
+<li><strong>Environment variables</strong>: using <a href="https://github.com/motdotla/dotenv">dotenv</a> and <a href="https://github.com/kentcdodds/cross-env#readme">cross-env</a></li>
+<li><strong>Security</strong>: set security HTTP headers using <a href="https://helmetjs.github.io">helmet</a></li>
+<li><strong>Santizing</strong>: sanitize request data against xss and query injection</li>
+<li><strong>CORS</strong>: Cross-Origin Resource-Sharing enabled using <a href="https://github.com/expressjs/cors">cors</a></li>
+<li><strong>Compression</strong>: gzip compression with <a href="https://github.com/expressjs/compression">compression</a></li>
+<li><strong>CI</strong>: continuous integration with <a href="https://travis-ci.org">Travis CI</a></li>
+<li><strong>Docker support</strong></li>
+<li><strong>Code coverage</strong>: using <a href="https://coveralls.io">coveralls</a></li>
+<li><strong>Code quality</strong>: with <a href="https://www.codacy.com">Codacy</a></li>
+<li><strong>Git hooks</strong>: with <a href="https://github.com/typicode/husky">husky</a> and <a href="https://github.com/okonet/lint-staged">lint-staged</a></li>
+<li><strong>Linting</strong>: with <a href="https://eslint.org">ESLint</a> and <a href="https://prettier.io">Prettier</a></li>
+<li><strong>Editor config</strong>: consistent editor configuration using <a href="https://editorconfig.org">EditorConfig</a></li>
+</ul>
+<div class="pilwrap" id="commands">
+  <h2>
+    <a href="#commands" name="commands" class="pilcrow"></a>
+Commands
+  </h2>
+</div>
+<p>Running locally:</p>
+<pre><code class="bash">yarn dev
+</code></pre>
+<p>Running in production:</p>
+<pre><code class="bash">yarn start
+</code></pre>
+<p>Testing:</p>
+<pre><code class="bash"><span class="hljs-comment"># run all tests</span>
+yarn <span class="hljs-built_in">test</span>
+
+<span class="hljs-comment"># run all tests in watch mode</span>
+yarn <span class="hljs-built_in">test</span>:watch
+
+<span class="hljs-comment"># run test coverage</span>
+yarn coverage
+</code></pre>
+<p>Docker:</p>
+<pre><code class="bash"><span class="hljs-comment"># run docker container in development mode</span>
+yarn docker:dev
+
+<span class="hljs-comment"># run docker container in production mode</span>
+yarn docker:prod
+
+<span class="hljs-comment"># run all tests in a docker container</span>
+yarn docker:<span class="hljs-built_in">test</span>
+</code></pre>
+<p>Linting:</p>
+<pre><code class="bash"><span class="hljs-comment"># run ESLint</span>
+yarn lint
+
+<span class="hljs-comment"># fix ESLint errors</span>
+yarn lint:fix
+
+<span class="hljs-comment"># run prettier</span>
+yarn prettier
+
+<span class="hljs-comment"># fix prettier errors</span>
+yarn prettier:fix
+</code></pre>
+<div class="pilwrap" id="environment-variables">
+  <h2>
+    <a href="#environment-variables" name="environment-variables" class="pilcrow"></a>
+Environment Variables
+  </h2>
+</div>
+<p>The environment variables can be found and modified in the <code>.env</code> file. They come with these default values:</p>
+<pre><code class="bash"><span class="hljs-comment"># Port number</span>
+PORT=3000
+
+<span class="hljs-comment"># URL of the Mongo DB</span>
+MONGODB_URL=mongodb://127.0.0.1:27017/node-boilerplate
+
+<span class="hljs-comment"># JWT</span>
+<span class="hljs-comment"># JWT secret key</span>
+JWT_SECRET=thisisasamplesecret
+<span class="hljs-comment"># Number of minutes after which an access token expires</span>
+JWT_ACCESS_EXPIRATION_MINUTES=30
+<span class="hljs-comment"># Number of days after which a refresh token expires</span>
+JWT_REFRESH_EXPIRATION_DAYS=30
+
+<span class="hljs-comment"># SMTP configuration options for the email service</span>
+<span class="hljs-comment"># For testing, you can use a fake SMTP service like Ethereal: https://ethereal.email/create</span>
+SMTP_HOST=email-server
+SMTP_PORT=587
+SMTP_USERNAME=email-server-username
+SMTP_PASSWORD=email-server-password
+EMAIL_FROM=support@yourapp.com
+</code></pre>
+<div class="pilwrap" id="project-structure">
+  <h2>
+    <a href="#project-structure" name="project-structure" class="pilcrow"></a>
+Project Structure
+  </h2>
+</div>
+<pre><code>src\
+ |--config\         # Environment variables and configuration related things
+ |--controllers\    # Route controllers (controller layer)
+ |--docs\           # Swagger files
+ |--middlewares\    # Custom express middlewares
+ |--models\         # Mongoose models (data layer)
+ |--routes\         # Routes
+ |--services\       # Business logic (service layer)
+ |--utils\          # Utility classes and functions
+ |--validations\    # Request data validation schemas
+ |--app.js          # Express app
+ |--index.js        # App entry point
+</code></pre>
+<div class="pilwrap" id="api-documentation">
+  <h2>
+    <a href="#api-documentation" name="api-documentation" class="pilcrow"></a>
+API Documentation
+  </h2>
+</div>
+<p>To view the list of available APIs and their specifications, run the server and go to <code>http://localhost:3000/v1/docs</code> in your browser. This documentation page is automatically generated using the <a href="https://swagger.io/">swagger</a> definitions written as comments in the route files.</p>
+<div class="pilwrap" id="api-endpoints">
+  <h3>
+    <a href="#api-endpoints" name="api-endpoints" class="pilcrow"></a>
+API Endpoints
+  </h3>
+</div>
+<p>List of available routes:</p>
+<p><strong>Auth routes</strong>:<br>
+<code>POST /v1/auth/register</code> - register<br>
+<code>POST /v1/auth/login</code> - login<br>
+<code>POST /v1/auth/refresh-tokens</code> - refresh auth tokens<br>
+<code>POST /v1/auth/forgot-password</code> - send reset password email<br>
+<code>POST /v1/auth/reset-password</code> - reset password</p>
+<p><strong>User routes</strong>:<br>
+<code>POST /v1/users</code> - create a user<br>
+<code>GET /v1/users</code> - get all users<br>
+<code>GET /v1/users/:userId</code> - get user<br>
+<code>PATCH /v1/users/:userId</code> - update user<br>
+<code>DELETE /v1/users/:userId</code> - delete user</p>
+<div class="pilwrap" id="error-handling">
+  <h2>
+    <a href="#error-handling" name="error-handling" class="pilcrow"></a>
+Error Handling
+  </h2>
+</div>
+<p>The app has a centralized error handling mechanism.</p>
+<p>Controllers should try to catch the errors and forward them to the error handling middleware (by calling <code>next(error)</code>). For convenience, you can also wrap the controller inside the catchAsync utility wrapper, which forwards the error.</p>
+<pre><code class="javascript"><span class="hljs-keyword">const</span> catchAsync = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../utils/catchAsync'</span>);
+
+<span class="hljs-keyword">const</span> controller = catchAsync(<span class="hljs-keyword">async</span> (req, res) =&gt; {
+  <span class="hljs-comment">// this error will be forwarded to the error handling middleware</span>
+  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Something wrong happened'</span>);
+});
+</code></pre>
+<p>The error handling middleware sends an error response, which has the following format:</p>
+<pre><code class="json">{
+  <span class="hljs-attr">"code"</span>: <span class="hljs-number">404</span>,
+  <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Not found"</span>
+}
+</code></pre>
+<p>When running in development mode, the error response also contains the error stack.</p>
+<p>The app has a utility ApiError class to which you can attach a response code and a message, and then throw it from anywhere (catchAsync will catch it).</p>
+<p>For example, if you are trying to get a user from the DB who is not found, and you want to send a 404 error, the code should look something like:</p>
+<pre><code class="javascript"><span class="hljs-keyword">const</span> httpStatus = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http-status'</span>);
+<span class="hljs-keyword">const</span> ApiError = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../utils/ApiError'</span>);
+<span class="hljs-keyword">const</span> User = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../models/User'</span>);
+
+<span class="hljs-keyword">const</span> getUser = <span class="hljs-keyword">async</span> (userId) =&gt; {
+  <span class="hljs-keyword">const</span> user = <span class="hljs-keyword">await</span> User.findById(userId);
+  <span class="hljs-keyword">if</span> (!user) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ApiError(httpStatus.NOT_FOUND, <span class="hljs-string">'User not found'</span>);
+  }
+};
+</code></pre>
+<div class="pilwrap" id="validation">
+  <h2>
+    <a href="#validation" name="validation" class="pilcrow"></a>
+Validation
+  </h2>
+</div>
+<p>Request data is validated using <a href="https://joi.dev/">Joi</a>. Check the <a href="https://joi.dev/api/">documentation</a> for more details on how to write Joi validation schemas.</p>
+<p>The validation schemas are defined in the <code>src/validations</code> directory and are used in the routes by providing them as parameters to the <code>validate</code> middleware.</p>
+<pre><code class="javascript"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);
+<span class="hljs-keyword">const</span> validate = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../../middlewares/validate'</span>);
+<span class="hljs-keyword">const</span> userValidation = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../../validations/user.validation'</span>);
+<span class="hljs-keyword">const</span> userController = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../../controllers/user.controller'</span>);
+
+<span class="hljs-keyword">const</span> router = express.Router();
+
+router.post(<span class="hljs-string">'/users'</span>, validate(userValidation.createUser), userController.createUser);
+</code></pre>
+<div class="pilwrap" id="authentication">
+  <h2>
+    <a href="#authentication" name="authentication" class="pilcrow"></a>
+Authentication
+  </h2>
+</div>
+<p>To require authentication for certain routes, you can use the <code>auth</code> middleware.</p>
+<pre><code class="javascript"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);
+<span class="hljs-keyword">const</span> auth = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../../middlewares/auth'</span>);
+<span class="hljs-keyword">const</span> userController = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../../controllers/user.controller'</span>);
+
+<span class="hljs-keyword">const</span> router = express.Router();
+
+router.post(<span class="hljs-string">'/users'</span>, auth(), userController.createUser);
+</code></pre>
+<p>These routes require a valid JWT access token in the Authorization request header using the Bearer schema. If the request does not contain a valid access token, an Unauthorized (401) error is thrown.</p>
+<p><strong>Generating Access Tokens</strong>:</p>
+<p>An access token can be generated by making a successful call to the register (<code>POST /v1/auth/register</code>) or login (<code>POST /v1/auth/login</code>) endpoints. The response of these endpoints also contains refresh tokens (explained below).</p>
+<p>An access token is valid for 30 minutes. You can modify this expiration time by changing the <code>JWT_ACCESS_EXPIRATION_MINUTES</code> environment variable in the .env file.</p>
+<p><strong>Refreshing Access Tokens</strong>:</p>
+<p>After the access token expires, a new access token can be generated, by making a call to the refresh token endpoint (<code>POST /v1/auth/refresh-tokens</code>) and sending along a valid refresh token in the request body. This call returns a new access token and a new refresh token.</p>
+<p>A refresh token is valid for 30 days. You can modify this expiration time by changing the <code>JWT_REFRESH_EXPIRATION_DAYS</code> environment variable in the .env file.</p>
+<div class="pilwrap" id="authorization">
+  <h2>
+    <a href="#authorization" name="authorization" class="pilcrow"></a>
+Authorization
+  </h2>
+</div>
+<p>The <code>auth</code> middleware can also be used to require certain rights/permissions to access a route.</p>
+<pre><code class="javascript"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);
+<span class="hljs-keyword">const</span> auth = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../../middlewares/auth'</span>);
+<span class="hljs-keyword">const</span> userController = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../../controllers/user.controller'</span>);
+
+<span class="hljs-keyword">const</span> router = express.Router();
+
+router.post(<span class="hljs-string">'/users'</span>, auth(<span class="hljs-string">'manageUsers'</span>), userController.createUser);
+</code></pre>
+<p>In the example above, an authenticated user can access this route only if that user has the <code>manageUsers</code> permission.</p>
+<p>The permissions are role-based. You can view the permissions/rights of each role in the <code>src/config/roles.js</code> file.</p>
+<p>If the user making the request does not have the required permissions to access this route, a Forbidden (403) error is thrown.</p>
+<div class="pilwrap" id="logging">
+  <h2>
+    <a href="#logging" name="logging" class="pilcrow"></a>
+Logging
+  </h2>
+</div>
+<p>Import the logger from <code>src/config/logger.js</code>. It is using the <a href="https://github.com/winstonjs/winston">Winston</a> logging library.</p>
+<p>Logging should be done according to the following severity levels (ascending order from most important to least important):</p>
+<pre><code class="javascript"><span class="hljs-keyword">const</span> logger = <span class="hljs-built_in">require</span>(<span class="hljs-string">'&lt;path to src&gt;/config/logger'</span>);
+
+logger.error(<span class="hljs-string">'message'</span>); <span class="hljs-comment">// level 0</span>
+logger.warn(<span class="hljs-string">'message'</span>); <span class="hljs-comment">// level 1</span>
+logger.info(<span class="hljs-string">'message'</span>); <span class="hljs-comment">// level 2</span>
+logger.http(<span class="hljs-string">'message'</span>); <span class="hljs-comment">// level 3</span>
+logger.verbose(<span class="hljs-string">'message'</span>); <span class="hljs-comment">// level 4</span>
+logger.debug(<span class="hljs-string">'message'</span>); <span class="hljs-comment">// level 5</span>
+</code></pre>
+<p>In development mode, log messages of all severity levels will be printed to the console.</p>
+<p>In production mode, only <code>info</code>, <code>warn</code>, and <code>error</code> logs will be printed to the console.<br>
+It is up to the server (or process manager) to actually read them from the console and store them in log files.<br>
+This app uses pm2 in production mode, which is already configured to store the logs in log files.</p>
+<p>Note: API request information (request url, response code, timestamp, etc.) are also automatically logged (using <a href="https://github.com/expressjs/morgan">morgan</a>).</p>
+<div class="pilwrap" id="custom-mongoose-plugins">
+  <h2>
+    <a href="#custom-mongoose-plugins" name="custom-mongoose-plugins" class="pilcrow"></a>
+Custom Mongoose Plugins
+  </h2>
+</div>
+<p>The app also contains 2 custom mongoose plugins that you can attach to any mongoose model schema. You can find the plugins in <code>src/models/plugins</code>.</p>
+<pre><code class="javascript"><span class="hljs-keyword">const</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>);
+<span class="hljs-keyword">const</span> { toJSON, paginate } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./plugins'</span>);
+
+<span class="hljs-keyword">const</span> userSchema = mongoose.Schema(
+  {
+    <span class="hljs-comment">/* schema definition here */</span>
+  },
+  { <span class="hljs-attr">timestamps</span>: <span class="hljs-literal">true</span> }
+);
+
+userSchema.plugin(toJSON);
+userSchema.plugin(paginate);
+
+<span class="hljs-keyword">const</span> User = mongoose.model(<span class="hljs-string">'User'</span>, userSchema);
+</code></pre>
+<div class="pilwrap" id="tojson">
+  <h3>
+    <a href="#tojson" name="tojson" class="pilcrow"></a>
+toJSON
+  </h3>
+</div>
+<p>The toJSON plugin applies the following changes in the toJSON transform call:</p>
+<ul>
+<li>removes __v, createdAt, updatedAt, and any schema path that has private: true</li>
+<li>replaces _id with id</li>
+</ul>
+<div class="pilwrap" id="paginate">
+  <h3>
+    <a href="#paginate" name="paginate" class="pilcrow"></a>
+paginate
+  </h3>
+</div>
+<p>The paginate plugin adds the <code>paginate</code> static method to the mongoose schema.</p>
+<p>Adding this plugin to the <code>User</code> model schema will allow you to do the following:</p>
+<pre><code class="javascript"><span class="hljs-keyword">const</span> queryUsers = <span class="hljs-keyword">async</span> (filter, options) =&gt; {
+  <span class="hljs-keyword">const</span> users = <span class="hljs-keyword">await</span> User.paginate(filter, options);
+  <span class="hljs-keyword">return</span> users;
+};
+</code></pre>
+<p>The <code>filter</code> param is a regular mongo filter.</p>
+<p>The <code>options</code> param can have the following (optional) fields:</p>
+<pre><code class="javascript"><span class="hljs-keyword">const</span> options = {
+  <span class="hljs-attr">sortBy</span>: <span class="hljs-string">'name:desc'</span>, <span class="hljs-comment">// sort order</span>
+  <span class="hljs-attr">limit</span>: <span class="hljs-number">5</span>, <span class="hljs-comment">// maximum results per page</span>
+  <span class="hljs-attr">page</span>: <span class="hljs-number">2</span>, <span class="hljs-comment">// page number</span>
+};
+</code></pre>
+<p>The plugin also supports sorting by multiple criteria (separated by a comma): <code>sortBy: name:desc,role:asc</code></p>
+<p>The <code>paginate</code> method returns a Promise, which fulfills with an object having the following properties:</p>
+<pre><code class="json">{
+  <span class="hljs-attr">"results"</span>: [],
+  <span class="hljs-attr">"page"</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-attr">"limit"</span>: <span class="hljs-number">5</span>,
+  <span class="hljs-attr">"totalPages"</span>: <span class="hljs-number">10</span>,
+  <span class="hljs-attr">"totalResults"</span>: <span class="hljs-number">48</span>
+}
+</code></pre>
+<div class="pilwrap" id="linting">
+  <h2>
+    <a href="#linting" name="linting" class="pilcrow"></a>
+Linting
+  </h2>
+</div>
+<p>Linting is done using <a href="https://eslint.org/">ESLint</a> and <a href="https://prettier.io">Prettier</a>.</p>
+<p>In this app, ESLint is configured to follow the <a href="https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base">Airbnb JavaScript style guide</a> with some modifications. It also extends <a href="https://github.com/prettier/eslint-config-prettier">eslint-config-prettier</a> to turn off all rules that are unnecessary or might conflict with Prettier.</p>
+<p>To modify the ESLint configuration, update the <code>.eslintrc.json</code> file. To modify the Prettier configuration, update the <code>.prettierrc.json</code> file.</p>
+<p>To prevent a certain file or directory from being linted, add it to <code>.eslintignore</code> and <code>.prettierignore</code>.</p>
+<p>To maintain a consistent coding style across different IDEs, the project contains <code>.editorconfig</code></p>
+<div class="pilwrap" id="contributing">
+  <h2>
+    <a href="#contributing" name="contributing" class="pilcrow"></a>
+Contributing
+  </h2>
+</div>
+<p>Contributions are more than welcome! Please check out the <a href="CONTRIBUTING.md.html">contributing guide</a>.</p>
+<div class="pilwrap" id="inspirations">
+  <h2>
+    <a href="#inspirations" name="inspirations" class="pilcrow"></a>
+Inspirations
+  </h2>
+</div>
+<ul>
+<li><a href="https://github.com/danielfsousa/express-rest-es2017-boilerplate">danielfsousa/express-rest-es2017-boilerplate</a></li>
+<li><a href="https://github.com/madhums/node-express-mongoose">madhums/node-express-mongoose</a></li>
+<li><a href="https://github.com/kunalkapadia/express-mongoose-es6-rest-api">kunalkapadia/express-mongoose-es6-rest-api</a></li>
+</ul>
+<div class="pilwrap" id="license">
+  <h2>
+    <a href="#license" name="license" class="pilcrow"></a>
+License
+  </h2>
+</div>
+<p><a href="LICENSE.html">MIT</a></p>
+</div>
+  </div>
+</body>
+</html>

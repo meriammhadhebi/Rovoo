@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>app.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" media="all" href="../doc-style.css" />
+  <script src="../doc-filelist.js"></script>
+  <script>
+    var relativeDir = "../";
+    var thisFile = "src\\app.js";
+    var defaultSidebar = true;
+  </script>
+  <script src="../doc-script.js"></script>
+
+</head>
+<body>
+  <div id="sidebar_wrapper">
+    <div id="sidebar_switch">
+      <span class="tree">Files</span>
+      <span class="headings">Headings</span>
+    </div>
+    <div id="tree"></div>
+    <div id="headings">
+
+    </div>
+  </div>
+  <div id="sidebar-toggle"></div>
+  <div id="container">
+    <div class="background highlight"></div>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    
+      <tr>
+        <td class="docs">
+          <h1>app.js</h1>
+        </td>
+        <td class="code highlight"></td>
+      </tr>
+    
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-1" id="section-1"></a>
+</div>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);
+<span class="hljs-keyword">const</span> helmet = <span class="hljs-built_in">require</span>(<span class="hljs-string">'helmet'</span>);
+<span class="hljs-keyword">const</span> xss = <span class="hljs-built_in">require</span>(<span class="hljs-string">'xss-clean'</span>);
+<span class="hljs-keyword">const</span> mongoSanitize = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express-mongo-sanitize'</span>);
+<span class="hljs-keyword">const</span> compression = <span class="hljs-built_in">require</span>(<span class="hljs-string">'compression'</span>);
+<span class="hljs-keyword">const</span> cors = <span class="hljs-built_in">require</span>(<span class="hljs-string">'cors'</span>);
+<span class="hljs-keyword">const</span> passport = <span class="hljs-built_in">require</span>(<span class="hljs-string">'passport'</span>);
+<span class="hljs-keyword">const</span> httpStatus = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http-status'</span>);
+<span class="hljs-keyword">const</span> config = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./config/config'</span>);
+<span class="hljs-keyword">const</span> morgan = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./config/morgan'</span>);
+<span class="hljs-keyword">const</span> { jwtStrategy } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./config/passport'</span>);
+<span class="hljs-keyword">const</span> { authLimiter } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./middlewares/rateLimiter'</span>);
+<span class="hljs-keyword">const</span> routes = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./routes/v1'</span>);
+<span class="hljs-keyword">const</span> coursesRoute = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./routes/courses/courses.route'</span>);
+<span class="hljs-keyword">const</span> { errorConverter, errorHandler } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./middlewares/error'</span>);
+<span class="hljs-keyword">const</span> ApiError = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/ApiError'</span>);
+<span class="hljs-keyword">const</span> tasksRoute = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./routes/tasks/tasks.route'</span>);
+
+<span class="hljs-keyword">const</span> app = express();
+
+<span class="hljs-keyword">const</span> forum = <span class="hljs-built_in">require</span> (<span class="hljs-string">'./routes/v1/form.route'</span>)
+
+
+<span class="hljs-keyword">if</span> (config.env !== <span class="hljs-string">'test'</span>) {
+  app.use(morgan.successHandler);
+  app.use(morgan.errorHandler);
+}
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-2" id="section-2"></a>
+</div>
+<p>set security HTTP headers</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">app.use(helmet());
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-3" id="section-3"></a>
+</div>
+<p>parse json request body</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">app.use(express.json());
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-4" id="section-4"></a>
+</div>
+<p>parse urlencoded request body</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">app.use(express.urlencoded({ <span class="hljs-attr">extended</span>: <span class="hljs-literal">true</span> }));
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-5" id="section-5"></a>
+</div>
+<p>sanitize request data</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">app.use(xss());
+app.use(mongoSanitize());
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-6" id="section-6"></a>
+</div>
+<p>gzip compression</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">app.use(compression());
+
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-7" id="section-7"></a>
+</div>
+<p>enable cors</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">app.use(cors());
+app.options(<span class="hljs-string">'*'</span>, cors());
+
+app.use(<span class="hljs-string">'/forum'</span> , forum)
+app.use(<span class="hljs-string">'/v1'</span>, routes);
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-8" id="section-8"></a>
+</div>
+<p>jwt authentication</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">app.use(passport.initialize());
+passport.use(<span class="hljs-string">'jwt'</span>, jwtStrategy);
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-9" id="section-9"></a>
+</div>
+<p>limit repeated failed requests to auth endpoints</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript"><span class="hljs-keyword">if</span> (config.env === <span class="hljs-string">'production'</span>) {
+  app.use(<span class="hljs-string">'/v1/auth'</span>, authLimiter);
+}
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-10" id="section-10"></a>
+</div>
+<p>v1 api routes</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-11" id="section-11"></a>
+</div>
+<p>tasks routes</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">app.use(<span class="hljs-string">'/tasks'</span>, tasksRoute);
+
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-12" id="section-12"></a>
+</div>
+<p>courses routes</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">app.use(<span class="hljs-string">'/courses'</span>, coursesRoute);
+
+
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-13" id="section-13"></a>
+</div>
+<p>send back a 404 error for any unknown api request</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">app.use(<span class="hljs-function">(<span class="hljs-params">req, res, next</span>) =&gt;</span> {
+  next(<span class="hljs-keyword">new</span> ApiError(httpStatus.NOT_FOUND, <span class="hljs-string">'Not found'</span>));
+});
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-14" id="section-14"></a>
+</div>
+<p>convert error to ApiError, if needed</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">app.use(errorConverter);
+
+</pre>
+        </td>
+      </tr>
+    
+      <tr>
+        <td class="docs">
+          <div class="pilwrap">
+  <a class="pilcrow" href="#section-15" id="section-15"></a>
+</div>
+<p>handle error</p>
+
+        </td>
+        <td class="code highlight">
+          <pre class="javascript">app.use(errorHandler);
+
+
+<span class="hljs-built_in">module</span>.exports = app;
+
+</pre>
+        </td>
+      </tr>
+    
+  </tbody>
+</table>
+
+  </div>
+</body>
+</html>
