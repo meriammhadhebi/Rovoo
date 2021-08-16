@@ -3,7 +3,6 @@ const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
 const userValidation = require('../../validations/user.validation');
 const userController = require('../../controllers/user.controller');
-const seabinController = require('../../controllers/seabin.controller');
 
 const router = express.Router();
 
