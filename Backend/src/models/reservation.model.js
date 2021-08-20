@@ -21,9 +21,9 @@ const reservationSchema = mongoose.Schema(
         required: true,
         default: '0'
     },
-    seabin: { type: Schema.Types.ObjectId, ref: 'SeaBin', required: false},
+    seabin: { type: Schema.Types.ObjectId, ref: 'SeaBin', required: false, default: null},
     client: { type: Schema.Types.ObjectId, ref: 'User', required: false },
-    driver: { type: Schema.Types.ObjectId, ref: 'User', required: false},
+    driver: { type: Schema.Types.ObjectId, ref: 'User', required: false, default: null},
   },
   {
     timestamps: true,

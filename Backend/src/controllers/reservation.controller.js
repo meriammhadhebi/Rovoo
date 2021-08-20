@@ -52,10 +52,10 @@ const affectreservation = async (req, res, next) => {
   
 }
 const getReseravtionByDriver = async (req, res, next) => {
+  const { iddriver } = req.params;
   try {
     
-    console.log(req.params)
-    const doc = await reservationModel.find({driver: req.params.iddriver});
+    const doc = await reservationModel.find({driver: iddriver});
     res.status(200).json(doc);
   } catch (error) {
     next(error);

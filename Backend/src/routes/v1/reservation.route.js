@@ -7,7 +7,7 @@ router.route('/').post(reservationController.createReservation )
                  .get(reservationController.getReservations)
 router.route('/:id').get(reservationController.getReservationsbySeabin)
                     .patch(reservationController.affectreservation)
-router.route('/driver/iddriver').get(reservationController.getReseravtionByDriver)
+router.route('/driver/:iddriver').get(reservationController.getReseravtionByDriver)
 
 
 module.exports = router;
