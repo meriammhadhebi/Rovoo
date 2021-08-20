@@ -13,10 +13,10 @@ const createUser = catchAsync(async (req, res) => {
 
 const createDriver = catchAsync(async (req, res) => {
   console.log('test');
-  const user = await userService.createDriver({ ...req.body, password: '112NN129D1', role: 'student' });
+  const user = await userService.createDriver({ ...req.body, password: '112NN129D1', role: 'driver' });
   if (user) {
     sendEmail(
-      'mariam.mhadhebi@gmail.com',
+      `${req.body.email}`,
       ' you recieved an invitation to join',
       `
         email : ${req.body.email}

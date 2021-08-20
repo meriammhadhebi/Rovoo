@@ -12,6 +12,10 @@ router
   .get(validate(userValidation.getUsers), userController.getUsers);
 
 router
+  .route('/driver')
+  .post( validate(userValidation.createUser), userController.createDriver)
+  
+router
   .route('/:userId')
   .get( validate(userValidation.getUser), userController.getUser)
   .patch( validate(userValidation.updateUser), userController.updateUser)

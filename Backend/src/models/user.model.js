@@ -23,18 +23,6 @@ const userSchema = mongoose.Schema(
         }
       },
     },
-    linkedin :{
-      id: {
-        type: String
-      },
-      url: {
-        type: String
-      },
-      headline: {
-        type: String
-      },
-
-    },
     password: {
       type: String,
       trim: true,
@@ -54,6 +42,11 @@ const userSchema = mongoose.Schema(
     activated : {
       type: Boolean,
       default : false,
+    },
+    status: {
+      type: String,
+      required: false,
+      default:'nonactif'
     },
   },
   {

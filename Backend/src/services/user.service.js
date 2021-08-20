@@ -42,7 +42,7 @@ const createUser = async (userBody) => {
  * @param {number} [options.page] - Current page (default = 1)
  * @returns {Promise<QueryResult>}
  */
- const queryTeachers = async (id) => {
+ const queryDrivers = async (id) => {
   return User.findById(id);
 };
 
@@ -98,29 +98,9 @@ const deleteUserById = async (userId) => {
 };
 const createDriver = async (userBody) => {
   if (await User.isEmailTaken(userBody.email)) {
-    const driver = User.findOne({ email: userBody.email });
-    user = Object.assign(driver);
-    await user.save();
-
-    return user;
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   }else{
-    const user = await User.create({...userBody});
-    await User.findOneAndUpdate({_id :userBody.org},{ $addToSet: { drivers: user._id} });
-    return user;
-
-  }
-};
-
-const createStudent = async (userBody) => {
-  if (await User.isEmailTaken(userBody.email)) {
-    const student = User.findOne({ email: userBody.email });
-    user = Object.assign(teacher,{ organisations:[...student.organisations ,userBody.org]});
-    await user.save();
-
-    return user;
-  }else{
-    const user = await User.create({...userBody, organisations: [userBody.org]});
-    await User.findOneAndUpdate({_id :userBody.org},{ $addToSet: { students: user._id} });
+    const user = await User.create(userBody);
     return user;
 
   }
@@ -133,8 +113,7 @@ module.exports = {
   getUserById,
   getUserByEmail,
   updateUserById,
-  createStudent,
   deleteUserById,
   createDriver,
-  queryTeachers
+  queryDrivers
 };
