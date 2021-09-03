@@ -3,6 +3,7 @@ const authRoute = require('./auth.route');
 const userRoute = require('./user.route');
 const seabinRoute = require('./seabin.route');
 const reservationRoute = require('./reservation.route');
+const documentationRoute = require('./documentation.route');
 const docsRoute = require('./docs.route');
 const config = require('../../config/config');
 
@@ -23,6 +24,10 @@ const defaultRoutes = [{
 {
     path: '/reservation',
     route: reservationRoute,
+},
+{
+    path: '/',
+    route: documentationRoute,
 },
 ];
 

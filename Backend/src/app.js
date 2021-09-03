@@ -46,6 +46,37 @@ app.use(cors());
 app.options('*', cors());
 
 app.use('/v1', routes);
+app.get("/", async function (req, res, next) {
+  res.send('Hello To Rovoo Documentation \
+----------------------------- \
+  I-Authentification \
+  I.1-Se connecter : /v1/auth/login \
+  I.3-Créer un compte : /v1/auth/register \
+  I.4-Se déconnecter : /v1/auth/logout \
+  I.5-Mot de passe oublier : /v1/auth/forgot-password \ I.6-Regenerer le mot de passe : /v1/auth/reset-password \
+  ----------------------------- \
+  II-User \
+  II.1-Creer un utilisateur : /v1/users/ \
+  II.2-Liste des utilisateurs : /v1/users/ \
+  II.3-Creer driver : /v1/users/driver \
+  II.4-utilisateur par id : /v1/users/:userID \
+  II.5-MAJ d un utilisateur : /v1/users/:userID \
+  II.6-Supprimer un utilisateur : /v1/users/:userID \
+  ----------------------------- \
+  III-Seabin  \
+  III.1-Ajouter un seabin : /v1/seabin/ \
+  III.2-Liste des seabins : /v1/seabin/ \
+  III.3-Supprimer un seabin : /v1/seabin/:id \
+  III.3-Modifier le statut d un seabin : /v1/seabin/:id \
+  -----------------------------  \
+  IV-Reservation    \
+  IV.1-Passer une commande : /v1/reservation/ \
+  IV.2-Liste des reservations : /v1/reservation/ \
+  IV.3-liste des reservations d un seabin donné : /v1/reservation/:id \
+  IV.3-Affecter une reservation à un seabin et un driver : /v1/reservation/:id \
+  IV.3-liste des reservations d un driver donné : /v1/reservation/driver/:iddriver ');
+  
+});
 
 // jwt authentication
 app.use(passport.initialize());
