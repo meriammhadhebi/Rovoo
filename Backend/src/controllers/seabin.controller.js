@@ -21,6 +21,16 @@ const getSeaBins = async (req, res, next) => {
     next(error);
   }
 };
+const getSeaBinById = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const doc = await seabinModel.findById(id);
+
+    res.status(200).json(doc);
+  } catch (error) {
+    next(error);
+  }
+};
 const DeleteSeabin = async (req, res) => {
   const { id } = req.params;
 
@@ -48,4 +58,5 @@ module.exports = {
   getSeaBins,
   DeleteSeabin,
   updateStatus,
+  getSeaBinById,
 };

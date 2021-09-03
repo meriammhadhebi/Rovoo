@@ -11,6 +11,7 @@ router
   .route('/:id')
   .delete(seabinController.DeleteSeabin)
   .patch(seabinController.updateStatus)
+  .get(seabinController.getSeaBinById)
 
 
 module.exports = router;
